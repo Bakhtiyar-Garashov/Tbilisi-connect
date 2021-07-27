@@ -76,13 +76,13 @@ WSGI_APPLICATION = 'tbilisiConnect.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.contrib.gis.db.backends.postgis",
-        "HOST": "localhost",
-        "NAME": "test",
-        "PASSWORD": "admin",
-        "PORT": 5432,
-        "USER": "postgres",
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'HOST': 'localhost',
+        'NAME': 'test',
+        'PASSWORD': 'admin',
+        'PORT': 5432,
+        'USER': 'postgres',
     }
 }
 
