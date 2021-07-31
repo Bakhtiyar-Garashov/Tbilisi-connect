@@ -17,7 +17,7 @@ class Restaurants(models.Model):
     name = models.CharField(max_length=50, verbose_name='Name')
     address = models.CharField(max_length=255, verbose_name='Address')
     image = models.ImageField(upload_to='images', verbose_name='Image')
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag,related_name='tags')
     url_main = models.URLField(null=True, blank=True, verbose_name='Main url (e.g., website url)')
     url_facebook = models.URLField(null=True, blank=True, verbose_name='Facebook page')
     url_instagram = models.URLField(null=True, blank=True, verbose_name='Instagram page')

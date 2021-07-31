@@ -1,7 +1,14 @@
 
+from typing import DefaultDict
 from django.urls import path
-from .views import index
+from .views import ListRestaurantsViewSet
+from django.urls.conf import include
+from rest_framework.routers import DefaultRouter
 
-urlpatterns = [
-    path('', index, name='index' ),
+
+router = DefaultRouter()
+router.register(r'', ListRestaurantsViewSet, basename='Restaurants')
+
+urlpatterns= [
+    path('restaurants/', include(router.urls))
 ]
