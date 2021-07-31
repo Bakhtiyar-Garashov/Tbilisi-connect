@@ -18,6 +18,7 @@ class ListRestaurantsViewSet(viewsets.ViewSet):
             self.queryset = Restaurants.objects.filter(name=name)
             return self.queryset
         else:
+            self.queryset = Restaurants.objects.all()
             return self.queryset
 
     def list(self, request):

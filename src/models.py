@@ -6,9 +6,6 @@ from django.contrib.gis.db import models
 class Tag(models.Model):
     text = models.CharField(max_length=50)
 
-    class Meta:
-        ordering = ['text']
-
     def __str__(self) -> str:
         return self.text
 
@@ -28,7 +25,6 @@ class Restaurants(models.Model):
     location = models.PointField(srid=4326,verbose_name='Location on map')
 
     class Meta:
-        ordering = ['name']
         verbose_name = 'Restaurant'
         verbose_name_plural = 'Restaurants'
 
