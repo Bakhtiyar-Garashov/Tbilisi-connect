@@ -19,7 +19,6 @@ class ListRestaurantsViewSet(viewsets.ViewSet):
             return self.queryset
         else:
             self.queryset = Restaurants.objects.all()
-            print("IMAGE",Restaurants.objects.get(pk=1).image.url)
             return self.queryset
 
     def list(self, request):
