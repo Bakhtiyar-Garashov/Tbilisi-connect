@@ -42,13 +42,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_gis',
     'leaflet',
-    'src'
-
+    'src',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -152,3 +153,5 @@ LEAFLET_CONFIG = {
         }
     }
 }
+
+CORS_ALLOW_ALL_ORIGINS = True
