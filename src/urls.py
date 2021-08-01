@@ -5,7 +5,6 @@ from .views import ListRestaurantsViewSet
 from django.urls.conf import include
 from rest_framework.routers import DefaultRouter
 
-
 router = DefaultRouter()
 router.register(r'', ListRestaurantsViewSet, basename='Restaurants')
 

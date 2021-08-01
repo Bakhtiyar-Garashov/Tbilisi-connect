@@ -15,21 +15,22 @@ class ListRestaurantsViewSet(viewsets.ViewSet):
         req = self.request
         name = req.query_params.get('name')
         if name:
-            self.queryset = Restaurants.objects.filter(name=name)
+            self.queryset = Restaurants.objects.filter(name__startswith=name)
             return self.queryset
         else:
             self.queryset = Restaurants.objects.all()
+            print("IMAGE",Restaurants.objects.get(pk=1).image.url)
             return self.queryset
 
     def list(self, request):
         queryset = self.get_queryset()
         if queryset.exists():
-            serializer = RestaurantSerializer(queryset, many=True)
+            serializer = RestaurantSerializer(queryset, many=True, context={"request": request})
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response({'detail': 'Not found'}, status=status.HTTP_404_NOT_FOUND)
 
     def retrieve(self, request, pk=None):
         queryset = Restaurants.objects.all()
         data = get_object_or_404(queryset, pk=pk)
-        serialized = RestaurantSerializer(data)
+        serialized = RestaurantSerializer(data, context={"request": request})
         return Response(serialized.data, status=status.HTTP_200_OK)

@@ -85,7 +85,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'HOST': 'localhost',
-        'NAME': 'test',
+        'NAME': 'tbilisi-connect',
         'PASSWORD': 'admin',
         'PORT': 5432,
         'USER': 'postgres',
@@ -127,8 +127,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
-STATIC_URL = '/static/'
 
 STATIC_URL = '/static/'
 
