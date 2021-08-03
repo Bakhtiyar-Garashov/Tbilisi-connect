@@ -1,10 +1,9 @@
 from rest_framework.response import Response
 from .models import Restaurants, Tag
-from .serializer import RestaurantSerializer
+from .serializer import RestaurantSerializer, TagSerializer
 from rest_framework import viewsets
 from django.shortcuts import get_object_or_404
 from rest_framework import status
-
 
 class ListRestaurantsViewSet(viewsets.ViewSet):
     """
@@ -14,8 +13,12 @@ class ListRestaurantsViewSet(viewsets.ViewSet):
     def get_queryset(self):
         req = self.request
         name = req.query_params.get('name')
-        if name:
+        tag = req.query_params.get('tag')
+        if name and tag is None:
             self.queryset = Restaurants.objects.filter(name__startswith=name)
+            return self.queryset
+        elif tag and name is None:
+            self.queryset = Restaurants.objects.filter(tags__text__icontains=tag)
             return self.queryset
         else:
             self.queryset = Restaurants.objects.all()
@@ -33,3 +36,13 @@ class ListRestaurantsViewSet(viewsets.ViewSet):
         data = get_object_or_404(queryset, pk=pk)
         serialized = RestaurantSerializer(data, context={"request": request})
         return Response(serialized.data, status=status.HTTP_200_OK)
+
+class ListAllTagsViewSet(viewsets.ViewSet):
+
+    def list(self, request):
+        queryset = Tag.objects.all()
+        if queryset.exists():
+            serializer = TagSerializer(queryset, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response({'detail': 'Not found'}, status=status.HTTP_404_NOT_FOUND)
+

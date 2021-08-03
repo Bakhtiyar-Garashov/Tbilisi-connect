@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'rest_framework_gis',
     'leaflet',
     'src',
-    'corsheaders'
+    'corsheaders',
+    
 ]
 
 MIDDLEWARE = [
