@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Restaurants, Tag
+from .models import Restaurants, Tag, WelcomePage
 from leaflet.admin import LeafletGeoAdmin
 
 # Register your models here.
@@ -15,3 +15,4 @@ admin.site.index_title = 'Tbilisi Connect adminstration'
 admin.site.site_title = 'Tbilisi Connect adminstration'
 admin.site.register(Restaurants, RestaurantsAdmin)
 admin.site.register(Tag)
+admin.site.register(WelcomePage)
