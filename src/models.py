@@ -66,7 +66,7 @@ class WelcomePage(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        if WelcomePage.objects.exists():
+        if WelcomePage.objects.all().count()>1:
             raise ValueError("Please modify existing text for Welcome page. Cannot add multiple one")
         else:
             super().save(*args, **kwargs)
