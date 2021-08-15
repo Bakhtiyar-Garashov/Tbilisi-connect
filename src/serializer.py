@@ -6,7 +6,7 @@ from .models import Restaurants, Tag, WelcomePage
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ('text',)
+        fields = ('id','text')
 
 
 class RestaurantSerializer(geoserializers.GeoFeatureModelSerializer):
