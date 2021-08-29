@@ -26,10 +26,8 @@ class ListRestaurantsViewSet(viewsets.ViewSet):
 
     def list(self, request):
         queryset = self.get_queryset()
-        if queryset.exists():
-            serializer = RestaurantSerializer(queryset, many=True, context={"request": request})
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response({'detail': 'Not found'}, status=status.HTTP_404_NOT_FOUND)
+        serializer = RestaurantSerializer(queryset, many=True, context={"request": request})
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk=None):
         queryset = Restaurants.objects.all()
@@ -41,16 +39,11 @@ class ListAllTagsViewSet(viewsets.ViewSet):
 
     def list(self, request):
         queryset = Tag.objects.all()
-        if queryset.exists():
-            serializer = TagSerializer(queryset, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response({'detail': 'Not found'}, status=status.HTTP_404_NOT_FOUND)
-
+        serializer = TagSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 class WelcomePageViewSet(viewsets.ViewSet):
     def list(self, request):
         queryset = WelcomePage.objects.all()
-        if queryset.exists():
-            serializer = WelcomePageSerializer(queryset, many=True, context={"request": request})
-            return Response(serializer.data, status = status.HTTP_200_OK)
-        return Response({'detail': 'Not found'}, status=status.HTTP_404_NOT_FOUND)
+        serializer = WelcomePageSerializer(queryset, many=True, context={"request": request})
+        return Response(serializer.data, status = status.HTTP_200_OK)
