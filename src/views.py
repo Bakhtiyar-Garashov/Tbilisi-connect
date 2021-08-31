@@ -15,7 +15,7 @@ class ListRestaurantsViewSet(viewsets.ViewSet):
         name = req.query_params.get('name')
         tag = req.query_params.get('tag')
         if name and tag is None:
-            self.queryset = Restaurants.objects.filter(name__startswith=name)
+            self.queryset = Restaurants.objects.filter(name__istartswith=name)
             return self.queryset
         elif tag and name is None:
             self.queryset = Restaurants.objects.filter(tags__text=tag)
