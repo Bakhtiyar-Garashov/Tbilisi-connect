@@ -83,6 +83,8 @@ WSGI_APPLICATION = 'tbilisiConnect.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+django_heroku.settings(locals())
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
@@ -134,7 +136,6 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-django_heroku.settings(locals())
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -154,3 +155,5 @@ LEAFLET_CONFIG = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+DATABASES['default']['ENGINE'] = "django.contrib.gis.db.backends.postgis"
