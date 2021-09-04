@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn Tbilisi-connect.wsgi --log-file=-
+web: gunicorn tbilisiConnect.wsgi --log-file=-
