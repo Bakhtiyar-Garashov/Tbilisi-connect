@@ -27,7 +27,7 @@ SECRET_KEY = 'n8-s7@6jnmiq-(b4t95)0pi60823gi_9z=y&ckl+&!d!p=xmw^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['tbilisi-connect.herokuapp.com']
+ALLOWED_HOSTS = ['tbilisi-connect.herokuapp.com', '*']
 
 
 # Application definition
@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'leaflet',
     'src',
     'corsheaders',
-    
+
 ]
 
 MIDDLEWARE = [
@@ -144,14 +144,24 @@ LEAFLET_CONFIG = {
     'DEFAULT_CENTER': (41.716667, 44.783333),
     'DEFAULT_ZOOM': 7,
     'MAX_ZOOM': 20,
-    'MIN_ZOOM':3,
+    'MIN_ZOOM': 3,
     'SCALE': 'both',
     'ATTRIBUTION_PREFIX': 'Made for Tbilisi Connect by Bakhtiyar',
     'PLUGINS': {
         'forms': {
             'auto-include': True
         }
-    }
+    },
+    'RESET_VIEW': False,
+    'TILES': [('OpenStreetMap', 'http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        'attribution': '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    }),
+        ('Drak Map', 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            'attribution': '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            'subdomains': 'abcd',
+            'maxZoom': 19
+        })],
+
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
