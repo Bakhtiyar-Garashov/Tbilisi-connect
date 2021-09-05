@@ -1,9 +1,9 @@
 from django.contrib import admin
+from django.contrib.gis.admin import OSMGeoAdmin
 from .models import Restaurants, Tag, WelcomePage
-from leaflet.admin import LeafletGeoAdmin
 
 # Register your models here.
-class RestaurantsAdmin(LeafletGeoAdmin, admin.ModelAdmin):
+class RestaurantsAdmin(OSMGeoAdmin, admin.ModelAdmin):
     list_display = ('name',)
     ordering = ('name',)
     list_filter = ('name',)
