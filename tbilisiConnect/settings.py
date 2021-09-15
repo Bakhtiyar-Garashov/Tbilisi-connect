@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'n8-s7@6jnmiq-(b4t95)0pi60823gi_9z=y&ckl+&!d!p=xmw^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['tbilisi-connect.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -83,16 +82,15 @@ WSGI_APPLICATION = 'tbilisiConnect.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-django_heroku.settings(locals())
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'HOST': 'ec2-50-17-255-244.compute-1.amazonaws.com',
-        'NAME': 'ddkde3unr0bs9m',
-        'PASSWORD': '67756887473dc036f951cf6e82cee1d97e9e55c3f21c01f8db428d9ef39e8936',
+        'HOST': 'localhost',
+        'NAME': 'tbilisiConnect',
+        'PASSWORD': 'admin',
         'PORT': 5432,
-        'USER': 'ofuaifzrzmmtlm',
+        'USER': 'dbadmin',
     }
 }
 
