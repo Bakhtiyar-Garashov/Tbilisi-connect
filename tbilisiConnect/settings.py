@@ -87,7 +87,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'HOST': 'localhost',
-        'NAME': 'tbilisiConnect',
+        'NAME': 'tbilisiconnect',
         'PASSWORD': 'admin',
         'PORT': 5432,
         'USER': 'dbadmin',
