@@ -10,9 +10,9 @@ class RestaurantsAdmin(LeafletGeoAdmin, admin.ModelAdmin):
     search_fields = ('name',)
 
 
-admin.site.site_header = 'Tbilisi Connect'
-admin.site.index_title = 'Tbilisi Connect adminstration'
-admin.site.site_title = 'Tbilisi Connect adminstration'
+admin.site.site_header = 'BazaraNet'
+admin.site.index_title = 'BazaraNet adminstration'
+admin.site.site_title = 'BazaraNet adminstration'
 admin.site.register(Restaurants, RestaurantsAdmin)
 admin.site.register(Tag)
 admin.site.register(WelcomePage)
